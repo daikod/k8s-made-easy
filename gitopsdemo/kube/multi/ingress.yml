@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portainer-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    cert-manager.io/private-key-algorithm: ECDSA
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 13.211.103.226.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: portainer-demo-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - 13.211.103.226.nip.io
+    secretName: portainer-tls

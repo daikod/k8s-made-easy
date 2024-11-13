@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: portainer-config
+data:
+  config0: "hello world0"
+  config1: "hello world1"
+  config2: "hello world2"
